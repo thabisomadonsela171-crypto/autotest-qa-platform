@@ -1,0 +1,1037 @@
+﻿
+/* ============================================================
+   AUTOTEST QA PLATFORM
+   PHASE 5 - TEST INTELLIGENCE
+   PREMIUM ENTERPRISE GLASSMORPHISM ANALYTICS
+   ============================================================ */
+
+
+/* ================= ROOT DESIGN SYSTEM ================= */
+
+:root {
+    --analytics-bg: #070c18;
+
+    --analytics-panel: rgba(16, 29, 51, 0.72);
+    --analytics-panel-light: rgba(25, 44, 72, 0.78);
+    --analytics-panel-hover: rgba(32, 55, 88, 0.82);
+
+    --analytics-cyan: #00e5ff;
+    --analytics-blue: #38bdf8;
+    --analytics-purple: #a78bfa;
+    --analytics-green: #4ade80;
+    --analytics-orange: #fb923c;
+    --analytics-red: #fb7185;
+
+    --analytics-text: #f8fafc;
+    --analytics-muted: #94a3b8;
+    --analytics-border: rgba(148, 163, 184, 0.15);
+
+    --analytics-radius: 18px;
+
+    --analytics-shadow:
+        0 16px 45px rgba(0, 0, 0, 0.28);
+
+    --analytics-glow:
+        0 0 30px rgba(0, 229, 255, 0.08);
+}
+
+
+/* ================= MAIN SECTION ================= */
+
+.performance-analytics-section {
+    position: relative;
+    width: 100%;
+    margin-top: 30px;
+    box-sizing: border-box;
+    isolation: isolate;
+}
+
+.performance-analytics-section * {
+    box-sizing: border-box;
+}
+
+
+/* ================= HEADER ================= */
+
+.analytics-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.analytics-header h2 {
+    margin: 0;
+    color: var(--analytics-text);
+    font-size: clamp(23px, 2.5vw, 30px);
+    font-weight: 900;
+    letter-spacing: -1px;
+}
+
+.analytics-header p {
+    margin: 9px 0 0;
+    color: var(--analytics-muted);
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+
+/* ================= REFRESH BUTTON ================= */
+
+.analytics-refresh-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 13px 21px;
+
+    border: 1px solid rgba(0, 229, 255, 0.38);
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0, 229, 255, 0.18),
+            rgba(56, 189, 248, 0.07)
+        );
+
+    color: var(--analytics-cyan);
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 0.4px;
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 22px rgba(0, 229, 255, 0.07);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease;
+}
+
+.analytics-refresh-button:hover {
+    transform: translateY(-3px);
+    border-color: var(--analytics-cyan);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0, 229, 255, 0.25),
+            rgba(56, 189, 248, 0.13)
+        );
+
+    box-shadow:
+        0 9px 30px rgba(0, 229, 255, 0.17);
+}
+
+.analytics-refresh-button:active {
+    transform: translateY(-1px);
+}
+
+.analytics-refresh-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.analytics-refresh-button:focus-visible {
+    outline: 2px solid var(--analytics-cyan);
+    outline-offset: 4px;
+}
+
+
+/* ================= ANALYTICS STATUS ================= */
+
+.analytics-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 25px;
+    padding: 10px 16px;
+
+    border: 1px solid rgba(0, 229, 255, 0.25);
+    border-radius: 30px;
+
+    background: rgba(0, 229, 255, 0.08);
+    color: var(--analytics-cyan);
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 1px;
+
+    box-shadow:
+        0 4px 20px rgba(0, 229, 255, 0.05);
+}
+
+.analytics-status.error {
+    color: var(--analytics-red);
+    border-color: rgba(251, 113, 133, 0.35);
+    background: rgba(251, 113, 133, 0.09);
+}
+
+
+/* ================= KPI GRID ================= */
+
+.analytics-metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 19px;
+    margin-bottom: 28px;
+}
+
+
+/* ================= PREMIUM KPI CARDS ================= */
+
+.analytics-card {
+    --card-accent: var(--analytics-cyan);
+    --card-glow: rgba(0, 229, 255, 0.13);
+
+    position: relative;
+    min-width: 0;
+    min-height: 170px;
+    padding: 24px;
+    overflow: hidden;
+
+    border: 1px solid var(--analytics-border);
+    border-radius: var(--analytics-radius);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(29, 49, 78, 0.83),
+            rgba(10, 20, 37, 0.91)
+        );
+
+    box-shadow: var(--analytics-shadow);
+
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.analytics-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--card-accent),
+            transparent
+        );
+
+    opacity: 0.95;
+}
+
+.analytics-card::after {
+    content: "";
+    position: absolute;
+    top: -65px;
+    right: -65px;
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    background: var(--card-glow);
+    filter: blur(38px);
+    pointer-events: none;
+}
+
+.analytics-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--card-accent);
+
+    box-shadow:
+        0 18px 42px rgba(0, 0, 0, 0.32),
+        0 0 28px var(--card-glow);
+}
+
+
+/* KPI ACCENT COLORS */
+
+.analytics-card:nth-child(1) {
+    --card-accent: #38bdf8;
+    --card-glow: rgba(56, 189, 248, 0.17);
+}
+
+.analytics-card:nth-child(2) {
+    --card-accent: #a78bfa;
+    --card-glow: rgba(167, 139, 250, 0.17);
+}
+
+.analytics-card:nth-child(3) {
+    --card-accent: #4ade80;
+    --card-glow: rgba(74, 222, 128, 0.17);
+}
+
+.analytics-card:nth-child(4) {
+    --card-accent: #fb923c;
+    --card-glow: rgba(251, 146, 60, 0.17);
+}
+
+
+/* KPI LABELS */
+
+.analytics-card-label {
+    position: relative;
+    z-index: 1;
+    color: #a5b4c8;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 1.15px;
+    text-transform: uppercase;
+}
+
+
+/* KPI VALUES */
+
+.analytics-card-value {
+    position: relative;
+    z-index: 1;
+    margin-top: 19px;
+    color: var(--analytics-text);
+    font-size: clamp(26px, 2.6vw, 36px);
+    font-weight: 900;
+    line-height: 1.2;
+    letter-spacing: -1px;
+    overflow-wrap: anywhere;
+
+    text-shadow:
+        0 0 20px var(--card-glow);
+}
+
+
+/* KPI DESCRIPTIONS */
+
+.analytics-card-description {
+    position: relative;
+    z-index: 1;
+    margin-top: 11px;
+    color: #91a2b9;
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+
+/* ================= ANALYTICS CONTENT GRID ================= */
+
+.analytics-content-grid {
+    display: grid;
+    grid-template-columns:
+        minmax(0, 1.65fr)
+        minmax(280px, 1fr);
+    gap: 22px;
+    margin-bottom: 28px;
+}
+
+
+/* ================= PREMIUM PANELS ================= */
+
+.analytics-panel {
+    position: relative;
+    min-width: 0;
+    padding: 26px;
+    overflow: hidden;
+
+    border: 1px solid var(--analytics-border);
+    border-radius: var(--analytics-radius);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(22, 39, 65, 0.84),
+            rgba(9, 19, 35, 0.92)
+        );
+
+    box-shadow: var(--analytics-shadow);
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.analytics-panel::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(0, 229, 255, 0.4),
+            transparent
+        );
+
+    pointer-events: none;
+}
+
+.analytics-panel:hover {
+    border-color: rgba(0, 229, 255, 0.24);
+
+    box-shadow:
+        0 18px 42px rgba(0, 0, 0, 0.30),
+        var(--analytics-glow);
+}
+
+
+/* ================= PANEL HEADINGS ================= */
+
+.analytics-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 24px;
+}
+
+.analytics-panel-header h3 {
+    margin: 0;
+    color: var(--analytics-text);
+    font-size: 16px;
+    font-weight: 900;
+    letter-spacing: -0.3px;
+}
+
+.analytics-panel-subtitle {
+    margin-top: 8px;
+    color: #91a2b9;
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+
+/* ================= TREND STATUS ================= */
+
+.analytics-trend-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 9px 15px;
+
+    border: 1px solid rgba(0, 229, 255, 0.22);
+    border-radius: 25px;
+
+    background: rgba(0, 229, 255, 0.09);
+    color: var(--analytics-cyan);
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 0.9px;
+}
+
+.analytics-trend-status.faster {
+    color: var(--analytics-green);
+    border-color: rgba(74, 222, 128, 0.30);
+    background: rgba(74, 222, 128, 0.11);
+}
+
+.analytics-trend-status.slower {
+    color: var(--analytics-orange);
+    border-color: rgba(251, 146, 60, 0.30);
+    background: rgba(251, 146, 60, 0.11);
+}
+
+.analytics-trend-status.stable {
+    color: var(--analytics-cyan);
+    border-color: rgba(0, 229, 255, 0.25);
+    background: rgba(0, 229, 255, 0.09);
+}
+
+.analytics-trend-status.insufficient-data {
+    color: var(--analytics-muted);
+    border-color: rgba(148, 163, 184, 0.2);
+    background: rgba(148, 163, 184, 0.07);
+}
+
+
+/* ================= TREND CHANGE ================= */
+
+.analytics-trend-change {
+    margin-top: 14px;
+    padding: 13px 16px;
+
+    border-left: 3px solid var(--analytics-orange);
+    border-radius: 0 10px 10px 0;
+
+    background: rgba(251, 146, 60, 0.07);
+    color: #cbd5e1;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+
+/* ================= PERFORMANCE CHART ================= */
+
+.analytics-chart-container {
+    position: relative;
+    width: 100%;
+    min-height: 260px;
+    margin-top: 17px;
+    padding: 12px 0;
+}
+
+#performanceTrendChart {
+    display: block;
+    width: 100%;
+    height: 260px;
+}
+
+
+/* ================= SLOW TEST INTELLIGENCE ================= */
+
+.slow-tests-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.slow-test-item {
+    position: relative;
+    padding: 17px;
+    overflow: hidden;
+
+    border: 1px solid rgba(251, 146, 60, 0.19);
+    border-radius: 13px;
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(251, 146, 60, 0.11),
+            rgba(251, 146, 60, 0.025)
+        );
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease;
+}
+
+.slow-test-item:hover {
+    transform: translateX(4px);
+    border-color: rgba(251, 146, 60, 0.45);
+    background: rgba(251, 146, 60, 0.12);
+}
+
+.slow-test-name {
+    color: #f1f5f9;
+    font-size: 12px;
+    font-weight: 900;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.slow-test-details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 12px;
+    color: #9aa9bd;
+    font-size: 10px;
+}
+
+.slow-test-duration {
+    color: var(--analytics-orange);
+    font-size: 12px;
+    font-weight: 900;
+
+    text-shadow:
+        0 0 12px rgba(251, 146, 60, 0.2);
+}
+
+
+/* ================= EMPTY STATES ================= */
+
+.analytics-empty-state {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 110px;
+    padding: 25px 15px;
+
+    border: 1px dashed rgba(148, 163, 184, 0.22);
+    border-radius: 12px;
+
+    color: var(--analytics-muted);
+    font-size: 12px;
+    text-align: center;
+    line-height: 1.7;
+}
+
+
+/* ================= HISTORY PANEL ================= */
+
+.analytics-history-panel {
+    width: 100%;
+    overflow: hidden;
+}
+
+
+/* ================= RECORD COUNT ================= */
+
+.analytics-record-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 13px;
+
+    border: 1px solid rgba(0, 229, 255, 0.2);
+    border-radius: 20px;
+
+    background: rgba(0, 229, 255, 0.08);
+    color: var(--analytics-cyan);
+    font-size: 10px;
+    font-weight: 900;
+}
+
+
+/* ================= HISTORY TABLE ================= */
+
+.analytics-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+
+    border: 1px solid rgba(148, 163, 184, 0.12);
+    border-radius: 12px;
+}
+
+.analytics-history-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    text-align: left;
+}
+
+.analytics-history-table th {
+    padding: 16px 14px;
+
+    border-bottom: 1px solid rgba(148, 163, 184, 0.16);
+
+    background: rgba(5, 15, 30, 0.75);
+    color: #91a2b9;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 0.85px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.analytics-history-table td {
+    padding: 16px 14px;
+
+    border-bottom: 1px solid rgba(148, 163, 184, 0.09);
+
+    color: #cbd5e1;
+    font-size: 11px;
+    white-space: nowrap;
+}
+
+.analytics-history-table tbody tr {
+    transition: background 0.2s ease;
+}
+
+.analytics-history-table tbody tr:hover {
+    background: rgba(0, 229, 255, 0.055);
+}
+
+.analytics-history-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* ================= RESULT BADGES ================= */
+
+.analytics-result-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 56px;
+    padding: 6px 11px;
+
+    border: 1px solid transparent;
+    border-radius: 20px;
+
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+}
+
+.analytics-result-badge.pass {
+    color: var(--analytics-green);
+    border-color: rgba(74, 222, 128, 0.22);
+    background: rgba(74, 222, 128, 0.11);
+}
+
+.analytics-result-badge.fail {
+    color: var(--analytics-red);
+    border-color: rgba(251, 113, 133, 0.22);
+    background: rgba(251, 113, 133, 0.11);
+}
+
+.analytics-result-badge.skip {
+    color: #a5b4c8;
+    border-color: rgba(148, 163, 184, 0.2);
+    background: rgba(148, 163, 184, 0.10);
+}
+
+
+/* ================= PERFORMANCE CLASSIFICATIONS ================= */
+
+.analytics-performance-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 65px;
+    padding: 6px 10px;
+
+    border: 1px solid transparent;
+    border-radius: 20px;
+
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+}
+
+.analytics-performance-badge.fast {
+    color: var(--analytics-green);
+    background: rgba(74, 222, 128, 0.10);
+    border-color: rgba(74, 222, 128, 0.22);
+}
+
+.analytics-performance-badge.normal {
+    color: var(--analytics-cyan);
+    background: rgba(0, 229, 255, 0.09);
+    border-color: rgba(0, 229, 255, 0.22);
+}
+
+.analytics-performance-badge.slow {
+    color: var(--analytics-orange);
+    background: rgba(251, 146, 60, 0.10);
+    border-color: rgba(251, 146, 60, 0.22);
+}
+
+
+/* ================= LOADING ================= */
+
+.analytics-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100px;
+    padding: 25px;
+
+    color: var(--analytics-muted);
+    font-size: 12px;
+    text-align: center;
+}
+
+
+/* ================= TABLE SCROLLBAR ================= */
+
+.analytics-table-wrapper::-webkit-scrollbar {
+    height: 7px;
+}
+
+.analytics-table-wrapper::-webkit-scrollbar-track {
+    background: rgba(15, 23, 42, 0.8);
+}
+
+.analytics-table-wrapper::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: rgba(0, 229, 255, 0.3);
+}
+
+.analytics-table-wrapper::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 229, 255, 0.55);
+}
+
+
+/* ============================================================
+   INDIVIDUAL TEST PERFORMANCE HISTORY
+   COLUMN ALIGNMENT - MATCH EXECUTION HISTORY TABLE
+   ============================================================ */
+
+.analytics-history-panel {
+    width: 100%;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.analytics-history-panel .analytics-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    border: 1px solid rgba(148, 163, 184, 0.12);
+    border-radius: 12px;
+}
+
+.analytics-history-table {
+    width: 100%;
+    min-width: 1000px;
+    table-layout: fixed;
+    border-collapse: collapse;
+    border-spacing: 0;
+    text-align: left;
+}
+
+/* Column widths */
+
+.analytics-history-table th:nth-child(1),
+.analytics-history-table td:nth-child(1) {
+    width: 23%;
+    text-align: left;
+}
+
+.analytics-history-table th:nth-child(2),
+.analytics-history-table td:nth-child(2) {
+    width: 22%;
+    text-align: left;
+}
+
+.analytics-history-table th:nth-child(3),
+.analytics-history-table td:nth-child(3) {
+    width: 21%;
+    text-align: left;
+}
+
+.analytics-history-table th:nth-child(4),
+.analytics-history-table td:nth-child(4) {
+    width: 11%;
+    text-align: center;
+}
+
+.analytics-history-table th:nth-child(5),
+.analytics-history-table td:nth-child(5) {
+    width: 11%;
+    text-align: center;
+}
+
+.analytics-history-table th:nth-child(6),
+.analytics-history-table td:nth-child(6) {
+    width: 12%;
+    text-align: center;
+}
+
+/* Table headings */
+
+.analytics-history-table thead th {
+    padding: 17px 14px;
+
+    background: rgba(5, 15, 30, 0.85);
+
+    border-bottom: 1px solid rgba(148, 163, 184, 0.16);
+
+    color: #91a2b9;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 0.85px;
+    text-transform: uppercase;
+
+    white-space: nowrap;
+    vertical-align: middle;
+}
+
+/* Table records */
+
+.analytics-history-table tbody td {
+    padding: 16px 14px;
+
+    border-bottom: 1px solid rgba(148, 163, 184, 0.09);
+
+    color: #cbd5e1;
+    font-size: 11px;
+    line-height: 1.6;
+
+    vertical-align: middle;
+}
+
+/* Keep long names inside their columns */
+
+.analytics-history-table tbody td:nth-child(1),
+.analytics-history-table tbody td:nth-child(2),
+.analytics-history-table tbody td:nth-child(3) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Row hover effect */
+
+.analytics-history-table tbody tr {
+    transition: background 0.2s ease;
+}
+
+.analytics-history-table tbody tr:hover {
+    background: rgba(0, 229, 255, 0.055);
+}
+
+.analytics-history-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Status alignment */
+
+.analytics-history-table .analytics-result-badge {
+    min-width: 65px;
+    justify-content: center;
+}
+
+/* Performance indicator alignment */
+
+.analytics-performance-cell {
+    text-align: center;
+}
+
+.analytics-performance-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.analytics-performance-track {
+    width: 38px;
+    height: 5px;
+    overflow: hidden;
+    border-radius: 10px;
+    background: rgba(148, 163, 184, 0.15);
+}
+
+.analytics-performance-fill {
+    height: 100%;
+    border-radius: inherit;
+    transition: width 0.3s ease;
+}
+
+/* Empty state */
+
+.analytics-history-table .analytics-empty-state {
+    min-height: 100px;
+    padding: 30px;
+    color: #94a3b8;
+    text-align: center;
+    white-space: normal;
+}
+
+/* History table scrollbar */
+
+.analytics-history-panel .analytics-table-wrapper::-webkit-scrollbar {
+    height: 7px;
+}
+
+.analytics-history-panel .analytics-table-wrapper::-webkit-scrollbar-track {
+    background: rgba(15, 23, 42, 0.8);
+}
+
+.analytics-history-panel .analytics-table-wrapper::-webkit-scrollbar-thumb {
+    background: rgba(0, 229, 255, 0.3);
+    border-radius: 10px;
+}
+
+.analytics-history-panel .analytics-table-wrapper::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 229, 255, 0.55);
+}
+
+
+/* ================= TABLET RESPONSIVENESS ================= */
+
+@media (max-width: 1100px) {
+    .analytics-metrics-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .analytics-content-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* ================= MOBILE RESPONSIVENESS ================= */
+
+@media (max-width: 600px) {
+    .analytics-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .analytics-header h2 {
+        font-size: 23px;
+    }
+
+    .analytics-header p {
+        font-size: 12px;
+    }
+
+    .analytics-refresh-button {
+        width: 100%;
+    }
+
+    .analytics-metrics-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .analytics-card {
+        min-height: 145px;
+        padding: 20px;
+    }
+
+    .analytics-card-value {
+        font-size: 29px;
+    }
+
+    .analytics-panel {
+        padding: 18px;
+    }
+
+    .analytics-panel-header h3 {
+        font-size: 15px;
+    }
+
+    .analytics-chart-container {
+        min-height: 220px;
+    }
+
+    #performanceTrendChart {
+        height: 220px;
+    }
+
+    .analytics-history-table th,
+    .analytics-history-table td {
+        padding: 13px 11px;
+    }
+}
+
+
+/* ================= ACCESSIBILITY ================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .performance-analytics-section *,
+    .performance-analytics-section *::before,
+    .performance-analytics-section *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="AutoTest Web Suite" verbose="2">
+
+    <listeners>
+        <listener class-name="za.co.autotest.reports.ExtentTestListener"/>
+    </listeners>
+
+    <test name="Web Browser Automation Tests">
+        <classes>
+            <class name="za.co.autotest.web.WebBrowserTest"/>
+        </classes>
+    </test>
+
+</suite>

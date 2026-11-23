@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="AutoTest QA Platform Suite" verbose="2">
+
+    <!-- ExtentReports Listener -->
+    <listeners>
+        <listener class-name="za.co.autotest.reports.ExtentTestListener"/>
+    </listeners>
+
+    <!-- Complete Automation Test Suite -->
+    <test name="Complete Automation Tests">
+
+        <classes>
+
+            <!-- Application Test -->
+            <class name="za.co.autotest.AppTest"/>
+
+            <!-- Environment Configuration Tests -->
+            <class name="za.co.autotest.tests.EnvironmentConfigTest"/>
+
+            <!-- Test Data Management Tests -->
+            <class name="za.co.autotest.tests.TestDataManagerTest"/>
+
+            <!-- API Automation Tests -->
+            <class name="za.co.autotest.api.ApiTest"/>
+
+            <!-- Web Browser Automation Tests -->
+            <class name="za.co.autotest.web.WebBrowserTest"/>
+
+        </classes>
+
+    </test>
+
+</suite>

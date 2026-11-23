@@ -1,0 +1,1844 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AutoTest QA Platform - Enterprise automated web and API testing dashboard">
+    <meta name="theme-color" content="#0b1424">
+
+    <title>AutoTest QA Platform | Dashboard</title>
+
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/live-monitor.css">
+    <link rel="stylesheet" href="/performance-analytics.css">
+</head>
+
+<body>
+
+<div class="app-layout">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-icon" aria-label="AutoTest">◈</div>
+
+            <div>
+                <h2>AutoTest</h2>
+                <span>QA PLATFORM</span>
+            </div>
+        </div>
+
+        <div class="nav-label">MAIN MENU</div>
+
+        <nav>
+
+            <a href="#" class="nav-item active">
+                <span class="nav-symbol" aria-hidden="true">◈</span>
+                Dashboard
+            </a>
+
+            <a href="#execution" class="nav-item">
+                <span class="nav-symbol" aria-hidden="true">⬡</span>
+                Test Executions
+            </a>
+
+            <a href="#quality" class="nav-item">
+                <span class="nav-symbol" aria-hidden="true">⎔</span>
+                Quality Insights
+            </a>
+
+            <a href="#performanceAnalytics" class="nav-item">
+                <span class="nav-symbol" aria-hidden="true">⏣</span>
+                Performance Analytics
+            </a>
+
+            <a href="#history" class="nav-item">
+                <span class="nav-symbol" aria-hidden="true">⧖</span>
+                Execution History
+            </a>
+
+            <a href="#reports" class="nav-item">
+                <span class="nav-symbol" aria-hidden="true">▤</span>
+                Reports Centre
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <div class="system-indicator">
+                <span class="status-dot"></span>
+
+                <div>
+                    <strong>System Online</strong>
+                    <small>Java Backend Connected</small>
+                </div>
+            </div>
+
+            <p>AutoTest QA Platform</p>
+            <small>Version 1.0.0</small>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main-content">
+
+
+        <!-- TOP HEADER -->
+
+        <header class="topbar">
+
+            <div>
+                <p class="eyebrow">AUTOMATION OVERVIEW</p>
+
+                <h1>Test Execution Dashboard</h1>
+
+                <p class="subtitle">
+                    Monitor, execute and analyse automated
+                    web and API testing activities.
+                </p>
+            </div>
+
+            <button id="refreshButton" class="refresh-button">
+                 Refresh Data
+            </button>
+
+        </header>
+
+
+        <!-- EXECUTION OVERVIEW -->
+
+        <section class="overview-section">
+
+            <div class="section-heading">
+
+                <div>
+                    <h2>Execution Overview</h2>
+
+                    <p>
+                        A consolidated view of your automation performance.
+                    </p>
+                </div>
+
+                <span id="lastUpdated" class="updated-label">
+                    Loading data...
+                </span>
+
+            </div>
+
+
+            <div class="stats-grid">
+
+                <article class="stat-card">
+
+                    <div class="stat-top">
+                        <span>Total Executions</span>
+                        <span class="stat-icon purple"></span>
+                    </div>
+
+                    <h3 id="totalExecutions">--</h3>
+                    <p>Recorded test runs</p>
+
+                </article>
+
+
+                <article class="stat-card">
+
+                    <div class="stat-top">
+                        <span>Total Tests</span>
+                        <span class="stat-icon blue"></span>
+                    </div>
+
+                    <h3 id="totalTests">--</h3>
+                    <p>Test cases executed</p>
+
+                </article>
+
+
+                <article class="stat-card">
+
+                    <div class="stat-top">
+                        <span>Passed Tests</span>
+                        <span class="stat-icon green"></span>
+                    </div>
+
+                    <h3 id="passedTests">--</h3>
+                    <p>Successful test cases</p>
+
+                </article>
+
+
+                <article class="stat-card">
+
+                    <div class="stat-top">
+                        <span>Failed Tests</span>
+                        <span class="stat-icon red">!</span>
+                    </div>
+
+                    <h3 id="failedTests">--</h3>
+                    <p>Tests requiring attention</p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- PERFORMANCE AND QUALITY -->
+
+        <section class="performance-grid">
+
+
+            <!-- PASS RATE -->
+
+            <article class="panel pass-panel">
+
+                <div class="panel-heading">
+
+                    <div>
+                        <h2>Pass Rate</h2>
+                        <p>Overall testing success rate</p>
+                    </div>
+
+                    <span class="panel-icon"></span>
+
+                </div>
+
+
+                <div class="pass-rate-content">
+
+                    <div class="pass-ring" id="passRing">
+
+                        <div class="ring-center">
+                            <strong id="passRate">0%</strong>
+                            <span>PASS RATE</span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="pass-details">
+
+                        <div>
+                            <span class="legend-dot green-bg"></span>
+                            Passed
+                            <strong id="passLegend">0</strong>
+                        </div>
+
+                        <div>
+                            <span class="legend-dot red-bg"></span>
+                            Failed
+                            <strong id="failLegend">0</strong>
+                        </div>
+
+                        <div>
+                            <span class="legend-dot yellow-bg"></span>
+                            Skipped
+                            <strong id="skipLegend">0</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- QUALITY ASSESSMENT -->
+
+            <article class="panel quality-panel" id="quality">
+
+                <div class="panel-heading">
+
+                    <div>
+                        <h2>Quality Assessment</h2>
+                        <p>Automated quality status</p>
+                    </div>
+
+                    <span class="panel-icon"></span>
+
+                </div>
+
+
+                <div class="quality-status" id="qualityStatus">
+                    LOADING
+                </div>
+
+                <p class="quality-description" id="qualityDescription">
+                    Analysing test execution records...
+                </p>
+
+                <div class="quality-divider"></div>
+
+
+                <div class="quality-metric">
+                    <span>Average Execution Time</span>
+                    <strong id="averageDuration">--</strong>
+                </div>
+
+                <div class="quality-metric">
+                    <span>Latest Execution ID</span>
+                    <strong id="latestExecution">--</strong>
+                </div>
+
+                <div class="quality-metric">
+                    <span>Skipped Tests</span>
+                    <strong id="skippedTests">--</strong>
+                </div>
+
+            </article>
+
+        </section>
+
+
+        <!-- TEST EXECUTION CENTRE -->
+
+        <section class="panel execution-panel" id="execution">
+
+            <div class="panel-heading">
+
+                <div>
+                    <h2>Test Execution Centre</h2>
+
+                    <p>
+                        Launch and manage your automated test suites.
+                    </p>
+                </div>
+
+                <span class="history-count">
+                    AUTOMATION CONTROL
+                </span>
+
+            </div>
+
+
+            <div class="execution-grid">
+
+
+                <div class="execution-card">
+
+                    <div class="execution-icon"></div>
+
+                    <h3>API Tests</h3>
+
+                    <p>
+                        Validate API endpoints, HTTP responses,
+                        request payloads and application behaviour.
+                    </p>
+
+                    <button class="run-button api-button" data-suite="API">
+                        Run API Tests
+                    </button>
+
+                </div>
+
+
+                <div class="execution-card">
+
+                    <div class="execution-icon"></div>
+
+                    <h3>Web Tests</h3>
+
+                    <p>
+                        Execute browser automation and validate
+                        web application functionality.
+                    </p>
+
+                    <button class="run-button web-button" data-suite="WEB">
+                        Run Web Tests
+                    </button>
+
+                </div>
+
+
+                <div class="execution-card">
+
+                    <div class="execution-icon"></div>
+
+                    <h3>Complete Suite</h3>
+
+                    <p>
+                        Execute all configured API and browser
+                        automation tests.
+                    </p>
+
+                    <button class="run-button all-button" data-suite="ALL">
+                        Run All Tests
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="execution-status" id="executionStatus">
+
+                <span class="status-indicator"></span>
+
+                <div>
+                    <strong id="executionStatusTitle">
+                        Ready to execute
+                    </strong>
+
+                    <p id="executionStatusMessage">
+                        Select a test suite to begin automation.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- LIVE TEST EXECUTION MONITOR -->
+
+        <section class="panel live-monitor-panel" id="liveMonitor">
+
+
+            <div class="live-monitor-heading">
+
+                <div>
+
+                    <div class="live-monitor-title-row">
+                        <span class="live-monitor-icon"></span>
+                        <h2>Live Test Execution Monitor</h2>
+                    </div>
+
+                    <p>
+                        Real-time monitoring and reporting
+                        of automated test execution.
+                    </p>
+
+                </div>
+
+                <span id="liveStatusBadge" class="live-status-badge idle">
+                    IDLE
+                </span>
+
+            </div>
+
+
+            <div class="live-execution-overview">
+
+                <div class="live-overview-card">
+                    <span class="live-label">TEST SUITE</span>
+                    <strong id="liveSuiteName">
+                        Waiting for execution
+                    </strong>
+                </div>
+
+                <div class="live-overview-card">
+                    <span class="live-label">CURRENT TEST</span>
+                    <strong id="liveCurrentTest">
+                        No test running
+                    </strong>
+                </div>
+
+                <div class="live-overview-card">
+                    <span class="live-label">EXECUTION STATUS</span>
+                    <strong id="liveExecutionMessage">
+                        Waiting for automated execution
+                    </strong>
+                </div>
+
+            </div>
+
+
+            <div class="live-progress-section">
+
+                <div class="live-progress-heading">
+
+                    <div>
+                        <span class="live-section-label">
+                            EXECUTION PROGRESS
+                        </span>
+
+                        <p id="liveProgressNote">
+                            Progress is calculated from actual test events.
+                        </p>
+                    </div>
+
+                    <strong id="liveProgressText">0%</strong>
+
+                </div>
+
+
+                <div class="live-progress-track">
+                    <div id="liveProgressFill" class="live-progress-fill"></div>
+                </div>
+
+
+                <div class="live-progress-footer">
+                    <span id="liveCompletedText">
+                        0 of 0 tests completed
+                    </span>
+
+                    <span id="liveProgressPercentage">0%</span>
+                </div>
+
+            </div>
+
+
+            <div class="live-results-section">
+
+                <div class="live-results-heading">
+                    <h3>Test Execution Results</h3>
+                    <span>EXECUTION METRICS</span>
+                </div>
+
+
+                <div class="live-metrics-grid">
+
+                    <div class="live-metric">
+                        <span>TOTAL STARTED</span>
+                        <strong id="liveTotal">0</strong>
+                    </div>
+
+                    <div class="live-metric passed">
+                        <span>PASSED</span>
+                        <strong id="livePassed">0</strong>
+                    </div>
+
+                    <div class="live-metric failed">
+                        <span>FAILED</span>
+                        <strong id="liveFailed">0</strong>
+                    </div>
+
+                    <div class="live-metric skipped">
+                        <span>SKIPPED</span>
+                        <strong id="liveSkipped">0</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="live-duration">
+
+                <div>
+                    <span class="live-duration-label">
+                        EXECUTION DURATION
+                    </span>
+
+                    <p>
+                        Total time taken by the automation suite.
+                    </p>
+                </div>
+
+                <strong id="liveDuration">0.00 sec</strong>
+
+            </div>
+
+
+            <div class="live-activity-section">
+
+                <div class="live-activity-heading">
+
+                    <div>
+                        <h3>Execution Activity</h3>
+
+                        <p>
+                            Individual test events and execution results.
+                        </p>
+                    </div>
+
+                    <span class="live-activity-indicator">
+                        <span class="activity-live-dot"></span>
+                        LIVE TEST EVENTS
+                    </span>
+
+                </div>
+
+
+                <div id="liveActivityLog"
+                     class="live-activity-log"
+                     aria-live="polite"
+                     aria-relevant="additions text">
+
+                    <div class="activity-empty">
+                        <span class="activity-empty-icon"></span>
+
+                        <strong>No execution activity yet</strong>
+
+                        <p>
+                            Test events will appear here when
+                            an automation suite starts.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PHASE 5: PERFORMANCE ANALYTICS -->
+
+        <section class="performance-analytics-section"
+                 id="performanceAnalytics">
+
+
+            <div class="analytics-header">
+
+                <div>
+                    <p class="eyebrow">PHASE 5  -  TEST INTELLIGENCE</p>
+
+                    <h2>Performance Analytics</h2>
+
+                    <p>
+                        Analyse individual test performance,
+                        identify slow tests and monitor historical trends.
+                    </p>
+                </div>
+
+                <button id="refreshAnalyticsButton" class="refresh-button">
+                     Refresh Analytics
+                </button>
+
+            </div>
+
+
+            <div id="analyticsStatus"
+                 class="analytics-status"
+                 role="status"
+                 aria-live="polite">
+
+                Loading performance analytics...
+
+            </div>
+
+
+            <div class="analytics-stats-grid">
+
+
+                <article class="analytics-stat-card">
+                    <div class="analytics-stat-top">
+                        <span>Total Recorded Tests</span>
+                        <span class="analytics-icon blue"></span>
+                    </div>
+                    <strong id="analyticsTotalTests">--</strong>
+                    <p>Individual test records</p>
+                </article>
+
+
+                <article class="analytics-stat-card">
+                    <div class="analytics-stat-top">
+                        <span>Average Test Duration</span>
+                        <span class="analytics-icon purple"></span>
+                    </div>
+                    <strong id="analyticsAverageDuration">--</strong>
+                    <p>Average execution time</p>
+                </article>
+
+
+                <article class="analytics-stat-card">
+                    <div class="analytics-stat-top">
+                        <span>Pass Rate</span>
+                        <span class="analytics-icon green"></span>
+                    </div>
+                    <strong id="analyticsPassRate">--</strong>
+                    <p>Historical test success rate</p>
+                </article>
+
+
+                <article class="analytics-stat-card">
+                    <div class="analytics-stat-top">
+                        <span>Slow Test Records</span>
+                        <span class="analytics-icon orange">!</span>
+                    </div>
+                    <strong id="analyticsSlowTests">--</strong>
+                    <p>Tests exceeding 3 seconds</p>
+                </article>
+
+
+            </div>
+
+
+            <div class="analytics-main-grid">
+
+
+                <article class="analytics-panel">
+
+                    <div class="analytics-panel-heading">
+                        <div>
+                            <h3>Execution Performance Trend</h3>
+                            <p>
+                                Average test duration across historical executions.
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <div class="trend-summary">
+
+                        <div>
+                            <span class="analytics-label">
+                                PERFORMANCE STATUS
+                            </span>
+
+                            <strong id="analyticsTrendStatus">
+                                ANALYSING
+                            </strong>
+                        </div>
+
+                        <div>
+                            <span class="analytics-label">
+                                PERFORMANCE CHANGE
+                            </span>
+
+                            <strong id="analyticsTrendChange">--</strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="analytics-chart-container">
+                        <canvas id="performanceTrendChart"
+                                role="img"
+                                aria-label="Average test execution duration across historical test runs">
+                        </canvas>
+                    </div>
+
+
+                    <div class="chart-legend">
+                        <span class="chart-legend-dot"></span>
+                        Average execution duration (ms)
+                    </div>
+
+                </article>
+
+
+                <article class="analytics-panel">
+
+                    <div class="analytics-panel-heading">
+                        <div>
+                            <h3>Slowest Tests</h3>
+                            <p>
+                                Tests requiring performance attention.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div id="slowTestsList" class="slow-tests-list">
+                        <div class="analytics-empty">
+                            Waiting for performance records...
+                        </div>
+                    </div>
+
+                </article>
+
+            </div>
+
+
+            <article class="analytics-panel analytics-history-panel">
+
+                <div class="analytics-panel-heading">
+
+                    <div>
+                        <h3>Individual Test Performance History</h3>
+
+                        <p>
+                            Historical execution times and results
+                            for individual automated tests.
+                        </p>
+                    </div>
+
+                    <span id="analyticsRecordCount"
+                          class="analytics-record-count">
+                        0 RECORDS
+                    </span>
+
+                </div>
+
+
+                <div class="table-wrapper analytics-table-wrapper">
+
+                    <table id="analyticsHistoryTable"
+                           class="analytics-table analytics-history-table">
+
+                        <thead>
+                            <tr>
+                                <th>TEST NAME</th>
+                                <th>TEST CLASS</th>
+                                <th>SUITE</th>
+                                <th>STATUS</th>
+                                <th>DURATION</th>
+                                <th>PERFORMANCE</th>
+                            </tr>
+                        </thead>
+
+
+                        <tbody>
+                            <tr>
+                                <td colspan="6" class="empty-state">
+                                    Loading performance history...
+                                </td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+        <!-- EXECUTION HISTORY -->
+
+        <section class="panel history-panel" id="history">
+
+            <div class="panel-heading">
+
+                <div>
+                    <h2>Execution History</h2>
+
+                    <p>
+                        Review previously recorded automation runs.
+                    </p>
+                </div>
+
+                <span class="history-count" id="historyCount">
+                    0 EXECUTIONS
+                </span>
+
+            </div>
+
+
+            <!-- PHASE 3.1: EXECUTION HISTORY FILTER -->
+
+            <div class="history-filter-bar">
+
+                <div class="history-filter-group">
+
+                    <label for="executionSuiteFilter">
+                        FILTER BY TEST SUITE
+                    </label>
+
+                    <select id="executionSuiteFilter"
+                            class="history-filter-control">
+
+                        <option value="ALL_SUITES">All Suites</option>
+                        <option value="API">API</option>
+                        <option value="WEB">WEB</option>
+                        <option value="ALL">ALL</option>
+
+                    </select>
+
+                </div>
+
+                <div class="history-filter-group">
+
+                    <label for="historyStartDate">
+                        FROM DATE
+                    </label>
+
+                    <input type="date"
+                           id="historyStartDate"
+                           class="history-filter-control">
+
+                </div>
+
+                <div class="history-filter-group">
+
+                    <label for="historyEndDate">
+                        TO DATE
+                    </label>
+
+                    <input type="date"
+                           id="historyEndDate"
+                           class="history-filter-control">
+
+                </div>
+
+                <button type="button"
+                        id="clearHistoryDateFilter"
+                        class="history-filter-control">
+                    Clear Dates
+                </button>
+
+                <div class="history-filter-group">
+
+                    <label for="historySearchInput">
+                        SEARCH EXECUTIONS
+                    </label>
+
+                    <input type="search"
+                           id="historySearchInput"
+                           class="history-filter-control"
+                           placeholder="Search ID or test suite..."
+                           autocomplete="off">
+
+                </div>
+
+                <span id="filteredHistoryCount"
+                      class="filtered-history-count">
+                    0 EXECUTIONS
+                </span>
+
+            </div>
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>EXECUTION ID</th>
+                            <th>TEST SUITE</th>
+                            <th>DATE</th>
+                            <th>TOTAL</th>
+                            <th>PASSED</th>
+                            <th>FAILED</th>
+                            <th>DURATION</th>
+                            <th>RESULT</th>
+                        </tr>
+                    </thead>
+
+
+                    <tbody id="historyTable">
+                        <tr>
+                            <td colspan="8" class="empty-state">
+                                Loading execution history...
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             REPORTS CENTRE
+        ====================================== -->
+
+        <section class="panel reports-panel" id="reports">
+
+            <div class="panel-heading">
+
+                <div>
+                    <h2>Reports Centre</h2>
+
+                    <p>
+                        Access, review and download your automation reports.
+                    </p>
+                </div>
+
+                <span class="history-count">
+                    REPORTING
+                </span>
+
+            </div>
+
+
+            <!-- =================================
+                 REPORT SUMMARY CARDS
+            ================================== -->
+
+            <div class="reports-summary-grid">
+
+
+                <article class="reports-summary-card">
+
+                    <span class="summary-label">
+                        Total Executions
+                    </span>
+
+                    <strong id="reportTotalExecutions">0</strong>
+
+                    <span class="summary-note">
+                        Recorded test runs
+                    </span>
+
+                </article>
+
+
+                <article class="reports-summary-card">
+
+                    <span class="summary-label">
+                        Total Tests
+                    </span>
+
+                    <strong id="reportTotalTests">0</strong>
+
+                    <span class="summary-note">
+                        Tests executed
+                    </span>
+
+                </article>
+
+
+                <article class="reports-summary-card">
+
+                    <span class="summary-label">
+                        Passed Tests
+                    </span>
+
+                    <strong id="reportPassedTests">0</strong>
+
+                    <span class="summary-note">
+                        Successful tests
+                    </span>
+
+                </article>
+
+
+                <article class="reports-summary-card">
+
+                    <span class="summary-label">
+                        Failed Tests
+                    </span>
+
+                    <strong id="reportFailedTests">0</strong>
+
+                    <span class="summary-note">
+                        Tests requiring review
+                    </span>
+
+                </article>
+
+
+                <article class="reports-summary-card">
+
+                    <span class="summary-label">
+                        Overall Pass Rate
+                    </span>
+
+                    <strong id="reportPassRate">0%</strong>
+
+                    <span class="summary-note">
+                        Testing success rate
+                    </span>
+
+                </article>
+
+
+                <article class="reports-summary-card">
+
+                    <span class="summary-label">
+                        Average Duration
+                    </span>
+
+                    <strong id="reportAverageDuration">0.00 sec</strong>
+
+                    <span class="summary-note">
+                        Average execution time
+                    </span>
+
+                </article>
+
+
+            </div>
+
+
+            <!-- =================================
+                 PHASE 2: REPORTS CENTRE ANALYTICS
+            ================================== -->
+
+            <div class="reports-analytics-grid">
+
+
+                <!-- TEST RESULTS BREAKDOWN -->
+
+                <article class="reports-analytics-card">
+
+                    <div class="reports-analytics-heading">
+
+                        <div>
+                            <h3>Test Results Breakdown</h3>
+
+                            <p>
+                                Overall distribution of test results.
+                            </p>
+                        </div>
+
+                        <span class="analytics-tag">
+                            ALL TESTS
+                        </span>
+
+                    </div>
+
+
+                    <div class="results-chart"
+                         id="reportsResultsChart">
+
+
+                        <div class="result-row">
+
+                            <div class="result-label">
+                                <span>Passed</span>
+                                <strong id="chartPassedCount">0</strong>
+                            </div>
+
+                            <div class="result-track">
+                                <div class="result-fill passed-fill"
+                                     id="chartPassedBar">
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="result-row">
+
+                            <div class="result-label">
+                                <span>Failed</span>
+                                <strong id="chartFailedCount">0</strong>
+                            </div>
+
+                            <div class="result-track">
+                                <div class="result-fill failed-fill"
+                                     id="chartFailedBar">
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="result-row">
+
+                            <div class="result-label">
+                                <span>Skipped</span>
+                                <strong id="chartSkippedCount">0</strong>
+                            </div>
+
+                            <div class="result-track">
+                                <div class="result-fill skipped-fill"
+                                     id="chartSkippedBar">
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="results-chart-total">
+
+                            <span>Total Tests</span>
+
+                            <strong id="chartTotalCount">0</strong>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- EXECUTION TRENDS -->
+
+                <article class="reports-analytics-card">
+
+                    <div class="reports-analytics-heading">
+
+                        <div>
+                            <h3>Execution Trends</h3>
+
+                            <p>
+                                Test results across recent executions.
+                            </p>
+                        </div>
+
+                        <span class="analytics-tag">
+                            RECENT RUNS
+                        </span>
+
+                    </div>
+
+
+                    <div class="trend-legend">
+
+                        <span>
+                            <i class="legend-dot passed-dot"></i>
+                            Passed
+                        </span>
+
+                        <span>
+                            <i class="legend-dot failed-dot"></i>
+                            Failed
+                        </span>
+
+                        <span>
+                            <i class="legend-dot skipped-dot"></i>
+                            Skipped
+                        </span>
+
+                    </div>
+
+
+                    <div class="execution-trend-chart"
+                         id="reportsExecutionTrend">
+
+                        <p class="chart-empty-message">
+                            Waiting for execution history...
+                        </p>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+
+            <!-- =================================
+                 PHASE 3.4: EXECUTION COMPARISON
+            ================================== -->
+
+            <article class="reports-analytics-card reports-comparison-panel">
+
+                <div class="reports-analytics-heading">
+                    <div>
+                        <h3>Execution Comparison</h3>
+                        <p>Compare the results of two historical automation runs.</p>
+                    </div>
+
+                    <span class="analytics-tag">RUN COMPARISON</span>
+                </div>
+
+                <div class="history-filter-bar">
+
+                    <div class="history-filter-group">
+                        <label for="comparisonExecutionA">
+                            FIRST EXECUTION
+                        </label>
+
+                        <select id="comparisonExecutionA"
+                                class="history-filter-control">
+                            <option value="">Select first execution</option>
+                        </select>
+                    </div>
+
+                    <div class="history-filter-group">
+                        <label for="comparisonExecutionB">
+                            SECOND EXECUTION
+                        </label>
+
+                        <select id="comparisonExecutionB"
+                                class="history-filter-control">
+                            <option value="">Select second execution</option>
+                        </select>
+                    </div>
+
+                    <button type="button"
+                            id="compareExecutionsButton"
+                            class="history-filter-control">
+                        Compare Executions
+                    </button>
+
+                </div>
+
+                <div id="comparisonMessage"
+                     class="summary-note"
+                     aria-live="polite">
+                    Select two executions to compare.
+                </div>
+
+                <div class="table-wrapper"
+                     id="comparisonResultsWrapper"
+                     hidden>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>METRIC</th>
+                                <th>FIRST EXECUTION</th>
+                                <th>SECOND EXECUTION</th>
+                                <th>DIFFERENCE</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="comparisonResultsTable">
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================
+                 PHASE 3.5: EXECUTION COMPARISON CHARTS
+            ================================== -->
+
+            <div id="comparisonChartsWrapper"
+                 class="comparison-charts-grid"
+                 hidden>
+
+                <article class="comparison-chart-card">
+
+                    <h3>Execution Duration Comparison</h3>
+
+                    <p>Compare how long each automation execution took.</p>
+
+                    <div id="comparisonDurationChart"
+                         class="comparison-chart-content">
+                    </div>
+
+                </article>
+
+                <article class="comparison-chart-card">
+
+                    <h3>Test Results Comparison</h3>
+
+                    <p>Compare passed, failed and skipped tests.</p>
+
+                    <div id="comparisonResultsChart"
+                         class="comparison-chart-content">
+                    </div>
+
+                </article>
+
+            </div>
+
+
+            <!-- =================================
+                 PHASE 3.6: ADVANCED COMPARISON
+            ================================== -->
+
+            <article id="comparisonAdvancedWrapper"
+                     class="reports-analytics-card comparison-advanced-panel"
+                     hidden>
+
+                <div class="reports-analytics-heading">
+                    <div>
+                        <h3>Advanced Comparison Insights</h3>
+                        <p>Performance improvement, execution quality and automatic analysis.</p>
+                    </div>
+
+                    <span class="analytics-tag">ADVANCED ANALYTICS</span>
+                </div>
+
+                <div class="comparison-advanced-grid">
+
+                    <div class="comparison-advanced-card">
+                        <span class="comparison-advanced-label">
+                            PERFORMANCE CHANGE
+                        </span>
+
+                        <strong id="comparisonPerformanceValue"
+                                class="comparison-advanced-value">
+                            --
+                        </strong>
+
+                        <span id="comparisonPerformanceStatus"
+                              class="comparison-status">
+                            Waiting for comparison
+                        </span>
+                    </div>
+
+                    <div class="comparison-advanced-card">
+                        <span class="comparison-advanced-label">
+                            FIRST EXECUTION QUALITY
+                        </span>
+
+                        <strong id="comparisonFirstQuality"
+                                class="comparison-advanced-value">
+                            --
+                        </strong>
+
+                        <span class="comparison-quality-description">
+                            Based on recorded test results
+                        </span>
+                    </div>
+
+                    <div class="comparison-advanced-card">
+                        <span class="comparison-advanced-label">
+                            SECOND EXECUTION QUALITY
+                        </span>
+
+                        <strong id="comparisonSecondQuality"
+                                class="comparison-advanced-value">
+                            --
+                        </strong>
+
+                        <span class="comparison-quality-description">
+                            Based on recorded test results
+                        </span>
+                    </div>
+
+                </div>
+
+                <div class="comparison-insight-block">
+                    <h4>Execution Quality Assessment</h4>
+
+                    <p id="comparisonQualitySummary"
+                       aria-live="polite">
+                        Select two executions to assess their quality.
+                    </p>
+                </div>
+
+                <div class="comparison-insight-block">
+                    <h4>Automatic Comparison Summary</h4>
+
+                    <p id="comparisonAutomaticSummary"
+                       aria-live="polite">
+                        Your comparison summary will appear here.
+                    </p>
+                </div>
+
+
+                <!-- =================================
+                     PHASE 3.7: COMPARISON INTELLIGENCE
+                ================================== -->
+
+                <section id="comparisonIntelligencePanel"
+                         class="comparison-intelligence-panel">
+
+                    <div class="comparison-intelligence-heading">
+                        <div>
+                            <h4>Advanced Comparison Intelligence</h4>
+                            <p>
+                                Automated regression detection, recommendations
+                                and historical analysis.
+                            </p>
+                        </div>
+
+                        <span class="analytics-tag">
+                            INTELLIGENCE ANALYSIS
+                        </span>
+                    </div>
+
+                    <div class="comparison-intelligence-block">
+                        <h5>Regression Detection</h5>
+
+                        <span id="comparisonRegressionStatus"
+                              class="comparison-intelligence-status neutral"
+                              aria-live="polite">
+                            Waiting for comparison
+                        </span>
+                    </div>
+
+                    <div class="comparison-intelligence-block">
+                        <h5>Performance Recommendations</h5>
+
+                        <p id="comparisonRecommendations"
+                           aria-live="polite">
+                            Recommendations will appear after comparison.
+                        </p>
+                    </div>
+
+                    <div class="comparison-intelligence-block">
+                        <h5>Quality Warnings</h5>
+
+                        <p id="comparisonQualityWarnings"
+                           aria-live="polite">
+                            Quality warnings will appear after comparison.
+                        </p>
+                    </div>
+
+                    <div class="comparison-intelligence-block">
+                        <h5>Historical Insights</h5>
+
+                        <p id="comparisonHistoricalInsights"
+                           aria-live="polite">
+                            Historical insights will appear after comparison.
+                        </p>
+                    </div>
+
+                    <div class="comparison-intelligence-summary">
+                        <h5>Actionable Summary</h5>
+
+                        <p id="comparisonActionableSummary"
+                           aria-live="polite">
+                            Your actionable summary will appear here.
+                        </p>
+                    </div>
+
+                </section>
+
+
+                <div class="comparison-export-row">
+
+                    <div>
+                        <strong>Comparison Report</strong>
+                        <p>Export the selected execution comparison as a CSV file.</p>
+                    </div>
+
+                    <button type="button"
+                            id="exportComparisonCsvButton"
+                            class="report-action">
+                        Export Comparison CSV
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================
+                 PHASE 3.8: INDIVIDUAL TEST COMPARISON
+            ================================== -->
+
+            <article id="individualComparisonPanel"
+                     class="reports-analytics-card individual-comparison-panel">
+
+                <div class="reports-analytics-heading">
+
+                    <div>
+                        <h3>Individual Test Comparison</h3>
+
+                        <p>
+                            Compare individual test results between the
+                            two selected executions. Identify status changes,
+                            performance improvements and missing tests.
+                        </p>
+                    </div>
+
+                    <span class="analytics-tag">
+                        PHASE 3.8
+                    </span>
+
+                </div>
+
+
+                <div class="individual-comparison-intro">
+
+                    <p>
+                        This analysis uses the same first and second executions
+                        selected in the Execution Comparison section above.
+                    </p>
+
+                    <button type="button"
+                            id="compareIndividualTestsButton"
+                            class="history-filter-control">
+
+                        Compare Individual Tests
+
+                    </button>
+
+                </div>
+
+
+                <div id="individualComparisonMessage"
+                     class="summary-note"
+                     role="status"
+                     aria-live="polite">
+
+                    Select two executions in the Execution Comparison section
+                    and click Compare Individual Tests.
+
+                </div>
+
+
+                <!-- INDIVIDUAL COMPARISON SUMMARY -->
+
+                <div id="individualComparisonSummary"
+                     class="individual-comparison-summary"
+                     hidden>
+
+
+                    <div class="individual-comparison-stats-grid">
+
+
+                        <div class="individual-comparison-stat">
+
+                            <span>MATCHED TESTS</span>
+
+                            <strong id="individualMatchedCount">0</strong>
+
+                            <small>Tests found in both executions</small>
+
+                        </div>
+
+
+                        <div class="individual-comparison-stat">
+
+                            <span>STATUS CHANGES</span>
+
+                            <strong id="individualStatusChangedCount">0</strong>
+
+                            <small>Tests with different results</small>
+
+                        </div>
+
+
+                        <div class="individual-comparison-stat">
+
+                            <span>FASTER TESTS</span>
+
+                            <strong id="individualFasterCount">0</strong>
+
+                            <small>Tests with reduced duration</small>
+
+                        </div>
+
+
+                        <div class="individual-comparison-stat">
+
+                            <span>SLOWER TESTS</span>
+
+                            <strong id="individualSlowerCount">0</strong>
+
+                            <small>Tests with increased duration</small>
+
+                        </div>
+
+
+                        <div class="individual-comparison-stat">
+
+                            <span>NEW TESTS</span>
+
+                            <strong id="individualNewCount">0</strong>
+
+                            <small>Tests only in second execution</small>
+
+                        </div>
+
+
+                        <div class="individual-comparison-stat">
+
+                            <span>MISSING TESTS</span>
+
+                            <strong id="individualMissingCount">0</strong>
+
+                            <small>Tests only in first execution</small>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+                <!-- INDIVIDUAL COMPARISON RESULTS TABLE -->
+
+                <div id="individualComparisonResultsWrapper"
+                     class="table-wrapper individual-comparison-table-wrapper"
+                     hidden>
+
+                    <table id="individualComparisonTable"
+                           class="individual-comparison-table">
+
+                        <thead>
+
+                            <tr>
+                                <th>TEST NAME</th>
+                                <th>TEST CLASS</th>
+                                <th>FIRST STATUS</th>
+                                <th>SECOND STATUS</th>
+                                <th>FIRST DURATION</th>
+                                <th>SECOND DURATION</th>
+                                <th>DURATION CHANGE</th>
+                                <th>COMPARISON RESULT</th>
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="individualComparisonResultsTable">
+
+                            <tr>
+                                <td colspan="8" class="empty-state">
+                                    Select two executions to compare individual tests.
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <!-- COMPARISON CLASSIFICATION LEGEND -->
+
+                <div id="individualComparisonLegend"
+                     class="individual-comparison-legend"
+                     hidden>
+
+                    <h4>Comparison Classification</h4>
+
+                    <div class="individual-legend-items">
+
+                        <span class="individual-legend-item matched">
+                            <i></i>
+                            Matched
+                        </span>
+
+                        <span class="individual-legend-item improved">
+                            <i></i>
+                            Faster
+                        </span>
+
+                        <span class="individual-legend-item regressed">
+                            <i></i>
+                            Slower
+                        </span>
+
+                        <span class="individual-legend-item changed">
+                            <i></i>
+                            Status Changed
+                        </span>
+
+                        <span class="individual-legend-item new">
+                            <i></i>
+                            New Test
+                        </span>
+
+                        <span class="individual-legend-item missing">
+                            <i></i>
+                            Missing Test
+                        </span>
+
+                    </div>
+
+                    <p>
+                        Faster and slower classifications are based on
+                        the recorded duration of matched tests. Status
+                        changes identify differences between test outcomes.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================
+                 EXISTING REPORT DOWNLOADS
+            ================================== -->
+
+            <div class="reports-grid">
+
+
+                <!-- HTML REPORT -->
+
+                <article class="report-card">
+
+                    <div class="report-card-icon">
+                        HTML
+                    </div>
+
+                    <h3>Detailed HTML Report</h3>
+
+                    <p>
+                        View the detailed ExtentReports test execution report.
+                    </p>
+
+                    <a href="/reports/html"
+                       target="_blank"
+                       rel="noopener"
+                       class="report-action">
+
+                        Open HTML Report
+
+                    </a>
+
+                    <span id="htmlReportStatus" class="report-status">
+                        Checking report...
+                    </span>
+
+                </article>
+
+
+                <!-- EXECUTION HISTORY DOWNLOAD -->
+
+                <article class="report-card">
+
+                    <div class="report-card-icon">
+                        CSV
+                    </div>
+
+                    <h3>Execution History</h3>
+
+                    <p>
+                        Download your recorded test execution history.
+                    </p>
+
+                    <a href="/reports/execution-history.csv"
+                       class="report-action">
+
+                        Download Execution History
+
+                    </a>
+
+                    <span id="executionReportStatus" class="report-status">
+                        Checking report...
+                    </span>
+
+                </article>
+
+
+                <!-- PERFORMANCE HISTORY DOWNLOAD -->
+
+                <article class="report-card">
+
+                    <div class="report-card-icon">
+                        CSV
+                    </div>
+
+                    <h3>Performance History</h3>
+
+                    <p>
+                        Download individual test performance records.
+                    </p>
+
+                    <a href="/reports/performance-history.csv"
+                       class="report-action">
+
+                        Download Performance History
+
+                    </a>
+
+                    <span id="performanceReportStatus" class="report-status">
+                        Checking report...
+                    </span>
+
+                </article>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- FOOTER -->
+
+        <footer>
+
+            <span>
+                AutoTest QA Platform (c) 2026
+            </span>
+
+            <span>
+                Powered by Java  -  Maven  -  Selenium  -  REST Assured  -  TestNG
+            </span>
+
+        </footer>
+
+
+    </main>
+
+</div>
+
+
+<!-- ERROR NOTIFICATION -->
+
+<div id="errorMessage"
+     class="error-message hidden"
+     role="alert"
+     aria-live="assertive">
+</div>
+
+
+<!-- DASHBOARD JAVASCRIPT -->
+
+<script src="/app.js"></script>
+<script src="/live-monitor.js"></script>
+<script src="/performance-analytics.js"></script>
+
+</body>
+</html>

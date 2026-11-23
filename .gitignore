@@ -1,0 +1,49 @@
+
+# Maven generated files
+/target/
+
+# Test execution reports
+/test-reports/
+
+# Project backups
+/backup/
+/backups/
+
+# Screenshots
+/screenshots/
+
+# Diagnostic and debug files
+AUTOTEST-FULL-DIAGNOSTIC.txt
+api-test-debug.log
+*.log
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+application-secrets.properties
+credentials.properties
+secrets.properties
+*.jks
+*.keystore
+*.pem
+*.key
+
+# Java generated files
+*.class
+
+# IDE files
+.idea/
+*.iml
+
+# Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini
+# Backup files - do not publish
+*.backup
+*.backup-*
+*.java.backup
+*.java.backup-*
+*.phase*-backup
+*.phase*-js-backup
